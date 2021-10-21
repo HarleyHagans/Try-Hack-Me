@@ -1,0 +1,36 @@
+Nmap 
+An in depth look at scanning with Nmap, a powerful network scanning tool. 
+
+When attacking a box it is good to have as much knowledge as possible. 
+
+Steps
+ -Gather IPs
+ -Find out what services are running
+ 
+ Services are run on ports. Tell Tell ports can give up info such as machines running web servers or active directory domain controllers. 
+ These provide more info giving greater insight into whats happening on the target. 
+ 
+ Common ports
+ HTTP 80
+ HTTPS 443
+ NETBIOS 139
+ SMB 445
+ 
+ In an Nmap port scan each port will be determined as open, closed, or filtered (usually by a firewall) 
+ 
+ Once open ports are known we can start research for the enumeration phase. 
+ 
+ - Nmap Switches -
+ To perform a stealth scan use -sS
+ To scan UDP use -sU
+ If you wanted to detect a operating system you would use the switch -O
+ To determine what version of a service is running use -sV
+ To get more information or verbosity utilize -v for even more info use -vv
+ Ideally scans will only be ran once. To output the scan in 3 major formats use -oA <basename> 
+ To output in a normal format use -oN <file>
+ To output into a grepable format use -oG <file>
+ If being  loud is not an issue we can enable aggressive mode by using -A
+ 
+ 
+ 
+ 
