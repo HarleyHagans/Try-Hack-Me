@@ -30,6 +30,12 @@ Steps
  To output in a normal format use -oN <file>
  To output into a grepable format use -oG <file>
  If being  loud is not an issue we can enable aggressive mode by using -A
+ Another way to be loud is to speed up the scan. The faster the scan the more loud and prone to errors. You can adjust speed using -T1 through -T5. The higher the number the faster the scan
+ To scan a specific port or port range use -p <Port number> or -p <port-range> 
+ *Not in the help feature* to tell Nmap to scan all ports use -p-
+ To activate a script with the Nmap library utilize --script
+ Activating scripts in the vuln category would be --script=vuln
+ 
  
  
  
