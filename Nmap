@@ -64,8 +64,35 @@ Steps
  Typically this will be a very targeted scan. An example is "nmap -sU --top-ports 20 <target>"
  
  - NULL, FIN, and Xmas -
+ As the name suggests, NULL scans (-sN) are when the TCP request is sent with no flags set at all. As per the RFC, the target host should respond with a RST if the port is closed.
  
+ FIN scans (-sF) work in an almost identical fashion; however, instead of sending a completely empty packet, a request is sent with the FIN flag (usually used to gracefully close an active connection). Once again, Nmap expects a RST if the port is closed.
  
+ As with the other two scans in this class, Xmas scans (-sX) send a malformed TCP packet and expects a RST response for closed ports. It's referred to as an xmas scan as the flags that it sets (PSH, URG and FIN) give it the appearance of a blinking christmas tree when viewed as a packet capture in Wireshark. 
+ 
+ - ICMP Network Scanning -
+ The main objective in a blackbox excercise is to create a map of the enviornment. To do this we will use a ping sweep. This is not 100% accurate but gives a good baseline to go off of. 
+ To do a ping sweep use -sn with the IP ranges which can be specified by a hyphen or CIDR notation. 
+ nmap -sn 192.168.0.1-254 or nmap -sn 192.168.0.0/24
+ 
+ - NSE Scripts -
+ NSE = Nmap Scripting Engine
+ NSE scripts are written in the Lua language and can be used from scanning for vulns to automating exploits. 
+ 
+ There are many categories
+  --script=safe   safe:- Won't affect the target
+  --script=intrusive  intrusive:- Not safe: likely to affect the target
+  --script=vuln  vuln:- Scan for vulnerabilities
+  --script=exploit  exploit:- Attempt to exploit a vulnerability
+  --script=auth  auth:- Attempt to bypass authentication for running services (e.g. Log into an FTP server anonymously)
+  --script=brute  brute:- Attempt to bruteforce credentials for running services
+  --script=discovery  discovery:- Attempt to query running services for further information about the network (e.g. query an SNMP server).
+ 
+ There are two ways to search for installed scripts.
+ 1:One is by using the /usr/share/nmap/scripts/script.db file. 
+ ex:grep "ftp" /usr/share/nmap/scripts/script.db
+ 2:The second way to search for scripts is quite simply to use the ls command.
+ ex:ls -l /usr/share/nmap/scripts/*ftp*
  
  
  
