@@ -36,7 +36,25 @@ Steps
  To activate a script with the Nmap library utilize --script
  Activating scripts in the vuln category would be --script=vuln
  
+ - TCP Connect Scans _
+ -sT attempts a full three way handshake
+ RFC 793
+ When a SYN flag is sent to a target that has a closed port it gets an RST flag back. 
+ When a SYN flag is sent to a target that has a open port it receives a SYN/ACK flag back. 
+ When a port is being protected by a firewall it will drop incoming packets indicating that it is being filtered. 
+ It is also easy to set firewalls to return filtered packets with an RST flage making it near impossible to get an accurate reading on a target. 
  
+ - SYN Scans -
+ SYN scans are not a full three way handshake. The attacking machine responds to the SYN/ACk from the target with a RST flag. 
  
+ Advantages for SYN scans:
+ Are that older IDS systems will not recognize it as they are looking for a full 3 way handshake.
+ Applications typically are configured to log full connections and not probes. 
+ Since the full 3 way handshake is not completed the scan is significantly faster. 
  
+ Disadvantages: 
+ Requires sudo permissions in linux. 
+ Unstable services can be brough down if testing in a production enviornment. 
+ 
+ If run with sudo permissions SYN scans are ran. If not the TCP Connect scans are run. 
  
