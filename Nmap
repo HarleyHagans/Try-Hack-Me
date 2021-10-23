@@ -36,7 +36,7 @@ Steps
  To activate a script with the Nmap library utilize --script
  Activating scripts in the vuln category would be --script=vuln
  
- - TCP Connect Scans _
+ - TCP Connect Scans -
  -sT attempts a full three way handshake
  RFC 793
  When a SYN flag is sent to a target that has a closed port it gets an RST flag back. 
@@ -57,4 +57,16 @@ Steps
  Unstable services can be brough down if testing in a production enviornment. 
  
  If run with sudo permissions SYN scans are ran. If not the TCP Connect scans are run. 
+ 
+ - UDP Scans -
+ Normally UDP does not receive a response and that is labeled as open|filtered. If it does the port is marked open. 
+ UDP scans tend to be incredible slow. 
+ Typically this will be a very targeted scan. An example is "nmap -sU --top-ports 20 <target>"
+ 
+ - NULL, FIN, and Xmas -
+ 
+ 
+ 
+ 
+ 
  
