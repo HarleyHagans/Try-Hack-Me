@@ -7,3 +7,10 @@
     Comparer - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
     Extender - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
     Scanner - Automated web vulnerability scanner that can highlight areas of the application for further manual investigation or possible exploitation with another section of Burp. This feature, while not in the community edition of Burp Suite, is still a key facet of performing a web application test.
+
+The target tab is one of the most useful tools for a pen test. Target allows you to put parameters on the defined scope. 
+   - The application URL (hopefully for dev/test and not prod)
+   - A list of the different user roles within the application
+   - Various test accounts and associated credentials for those accounts
+   - A list of pieces/forms in the application which are out-of-scope for testing and should be avoided
+   
