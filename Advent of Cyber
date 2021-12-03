@@ -1,0 +1,72 @@
+---	Day 1	---
+Web Exploitation IDOR
+  Learning Objectives
+    1.What is an IDOR vulnerability?
+   IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.
+    2.How do I find and exploit IDOR vulnerabilities?
+   IDORs are typically found in three main areas. 
+    Query Component
+      Query component data is passed in a url when making request to websites. URLs can be broken down into multiple components. 
+      Protocol: https://
+      Domain: website.com
+      Page: /profile
+      Query component: id=12
+      This would indicate a profile is being requested. Then the parameter is profile 12 is being requested. The page could be tampered wit by changing the ID parameter to obtain another profile giving us information that was not intended for us. 
+    Post Variables
+      Ex: HTML code form that updates a user's password 
+      <form method="POST" action="/update-password">
+       <input type="hidden" name"user_id" value="123">
+      <div>New Password:</div>
+      <div><input type="password" name="new_password"></div>
+      <div><input type="submit" value="Change Password">
+      </form>
+      In this form line 2 for value ="123" the value could be changed to another user_id. 
+    Cookies
+      To stay logged into websites cookies are utilized. This helps remember your session. Normally its a lon string of random text such as 5db28452c4161cf88c6f33e57b62a357. The web servers use the string to retrieve information and validate a session for users. Less experienced developers may stor information in the cookie. Changing the value of that information could lead to viewing someone elses information. 
+    
+    3.Challenge Walkthrough.
+    There were 3 pages on the webpage. Builds/Inventory/Your activite. 
+    Your activity was the only page succeptable to IDOR. 
+    By changing the ID we found that:
+    ID 1 = Santa
+    ID 4 = McStocker
+    ID 9 = The Grinch
+    ID 11 = McSkiddy
+    
+    After finding Santa's account, what is their position in the company?
+      The Boss!
+    After finding McStocker's account, what is their position in the company?
+      Build Manager
+    After finding the account responsible for tampering, what is their position in the company?
+      Mischief Manager
+    What is the received flag when McSkidy fixes the Inventory Management System?
+      THM{AOC_IDOR_2B34BHI3}
+    
+---	Day 2	---
+
+---	Day 3	---
+
+---	Day 4	---
+
+---	Day 5	---
+
+---	Day 6	---
+---	Day 7	---
+---	Day 8	---
+---	Day 9	---
+---	Day 10	---
+---	Day 11	---
+---	Day 12	---
+---	Day 13	---
+---	Day 14	---
+---	Day 15	---
+---	Day 16	---
+---	Day 17	---
+---	Day 18	---
+---	Day 19	---
+---	Day 20	---
+---	Day 21	---
+---	Day 22	---
+---	Day 23	---
+---	Day 24	---
+---	Day 25	---
