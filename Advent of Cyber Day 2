@@ -1,0 +1,81 @@
+--- Day 2 ---
+
+Learning Objectives 
+    1:Understanding the underlying technology of web servers and how the web communicates.
+       ---HTTP---
+        HTTP protocol is a client-server protocol to provide communication between a client(Your Computer) and a webserver.
+        HTTP request are similar to TCP network request but a HTTP specific request adds a header to indicate the protocol and other information. 
+        In every HTTP request there is a method and a target header. 
+          The target header will specify what to retrieve from the server. 
+            The method header will specify how. 
+          When retrieving information from a web server, it is common to use the GET method, such as loading a picture.
+          When sending data to a web server, it is common to use the POST method, such as sending login information.
+          Ex Request: GET / HTTP/1.1
+              Host: tryhackme.com
+              User-Agent: Mozilla/5.0 Firefox/87.0
+              Referer: https://tryhackme.com/
+          Once the server receives a request, it will send back a response, including any requested content if successful and a status code. The status code is used to tell the client browser how the webserver interpreted the request. The most common "successful" status code is HTTP 200 OK.
+          Ex Response: HTTP/1.1 200 OK
+            Server: nginx/1.15.8
+            Date: Wednesday, 24 Nov 2021 13:34:03 GMT
+            Content-Type: text/html
+            Content-Length: 98
+
+            <html>
+            <head>
+                <title>Advent of Cyber</title>
+            </head>
+            <body>
+                Welcome To Advent of Cyber!
+            </body>
+            </html>
+           This is just one piece. Once you receive content from the web server your browser needs methods to interpret and render the information sent. Web applications are commonly formatted in HTML (HyperText Markup Language), rendered, and styled in CSS (Cascading Style Sheets). JavaScript is also commonly used to provide additional functionality.
+           
+       ---Cookies---
+        HTTP is a stateless protocol. Sent request to a web server cannot be distinguished between users. To solve this problem and identify different users and access levels, the webserver will assign cookies to create and manage a stateful session between the client and server. 
+        Cookies are tiny pieces of data (metadata) or information locally stored on your computer that are sent to the server when you make a request.
+        Cookies can be assigned any name and any value. Meaning the webserver can store any info it wants. Even malicious info. In this lab we will be focusing on authentication cookies, also known as session cookies. Authentication or session cookies are used to identify you and what access level is attached to your session.
+       https://tryhackme-images.s3.amazonaws.com/user-uploads/5e73cca6ec4fcf1309f2df86/room-content/64c8a1a54a0e08d9e89701307462f24b.png  is a diagram describing assigning and using a cookie from the initial request to the session request.
+       Most of the time the process stats with a POST request to the webserver. The webserver responds verifying it received the data and sets a unique cookie. Cookies are arbitrary and values are determined by best-practice or the web developer. Once the cookie is assigned, as long as the cookie stays locally stored in your browser, all future GET requests will be automatically sent with that cookie to identify you and your access level. The server will locate and deserialize your session upon receipt of the Get request and cookie. Deserialization is the process of taking a data format such as JSON and rebuilding it as an object. If successful, the webserver will reply to your request with a 200 response.
+      
+      ---Cookie Components---
+       Cookies are made up of 11 different components; you can find an explanation of each component in the table below.
+Component	Purpose	Example
+Name:
+  Unique cookie identifier (arbitrarily set by web-server). Always paired with the value component.	
+    SessionID
+Value:	
+  Unique cookie value (arbitrarily set by web-server). Always paired with the name component 
+    sty1z3kz11mpqxjv648mqwlx4ginpt6c
+Domain:	
+  Originating domain of the cookie. Sets the scope of the cookie.
+	  .tryhackme.com
+Path:	
+   Local path to cookie. Sets the scope of the cookie.
+	   /
+Expires/Max-age:	
+   Date/time at which cookies expires
+	   2022-11-11T15:39:04.166Z
+Size:	
+  Disk size of the cookie in bytes. This is typically {Name+Value}
+	   91
+HttpOnly:	
+  Cookie cannot be accessed through client-side scripts
+	  (indicated by a checkmark)
+Secure:	
+  Cookie is only sent over HTTPS
+	  (indicated by a checkmark)
+SameSite:
+  Specifies when a cookie is sent through cross-site requests
+	  none
+SameParty:
+  Extends functionality of SameSite attribute to First-Party sets. 
+	  (indicated by a checkmark)
+Priority:
+  Defines the importance of a cookie. Determines whether it should be removed or held on to
+	  High
+       
+       
+       
+    2:Understand what cookies are and their purpose.
+    3:Learn how to manipulate and manage cookies for malicious use.
