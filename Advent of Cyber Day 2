@@ -30,7 +30,8 @@ Learning Objectives
             </body>
             </html>
            This is just one piece. Once you receive content from the web server your browser needs methods to interpret and render the information sent. Web applications are commonly formatted in HTML (HyperText Markup Language), rendered, and styled in CSS (Cascading Style Sheets). JavaScript is also commonly used to provide additional functionality.
-           
+     
+     2:Understand what cookies are and their purpose.      
        ---Cookies---
         HTTP is a stateless protocol. Sent request to a web server cannot be distinguished between users. To solve this problem and identify different users and access levels, the webserver will assign cookies to create and manage a stateful session between the client and server. 
         Cookies are tiny pieces of data (metadata) or information locally stored on your computer that are sent to the server when you make a request.
@@ -74,8 +75,55 @@ SameParty:
 Priority:
   Defines the importance of a cookie. Determines whether it should be removed or held on to
 	  High
+      
+      Cookie components are always prepared in pairs. The main pair is name-value; this will define the name of the cookie and the value of the name. The second pair is the attribute-value pair; this will define an attribute of the cookie and the value of the attribute. Below is an example of what Set-Cookie syntax looks like.
        
-       
-       
-    2:Understand what cookies are and their purpose.
-    3:Learn how to manipulate and manage cookies for malicious use.
+       Ex: Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>; Secure; HttpOnly 
+    
+    3:Learn how to manipulate and manage cookies for malicious use.   
+       ---Cookie Manipulation---
+    		Cookie manipulation is modifying a cookie to obtain unintended behavior or information. Cookie manipulation is possible because the cookies are stored locally on your host system. You have complete control over them and may modify them as you please. 
+   
+   			To modify cookies you need to know how to get to the developer tools. 
+   
+   			Developer tools can be accessed by pressing F12 or Ctrl+Shift+I. Once developer tools are open, to access your cookies, navigate to the Storage tab in Firefox or Application tab in Chrome/Edge; select the Cookies dropdown on the left-hand side of the console.
+				Ctrl+Shift+R does a hard reset fully reconnecting the website and negotiating new cookies. 
+
+				Cookie values may seem random at first; however, they often have an encoded value or meaning behind them that can be decoded to a non-arbitrary value such as a Javascript object.
+
+				From an attacker's perspective, you can decode the cookie value to identify the underlying objects. Once you have identified the underlying objects, you can modify them to what you want. To use the cookie, you will need to encode it back to the original encoding and replace the cookie value. Below is an example of a decoded cookie value.
+
+				{firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"
+
+		--- Lab ---
+		
+
+Register an account, and verify the cookies using the Developer Tools in your browser.
+
+What is the name of the new cookie that was created for your account?
+user-auth
+
+What encoding type was used for the cookie value?
+hexadecimal
+
+What object format is the data of the cookie stored in?
+JSON
+
+Manipulate the cookie and bypass the login portal.
+
+What is the value of the administrator cookie? (username = admin)
+7b636f6d70616e793a2022546865204265737420466573746976616c20436f6d70616e79222c206973726567697374657265643a2254727565222c20757365726e616d653a2261646d696e227d
+
+What team environment is not responding?
+Hr
+
+What team environment has a network warning?
+application
+
+
+
+
+
+
+
+
