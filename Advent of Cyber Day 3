@@ -1,0 +1,67 @@
+Web Exploitation Christmas Blackout
+
+  Learning Objective 
+  In today's task, we're going to be using our investigatory skills and techniques to discover un-listed content, and attempt some common authentication using the clues around us.
+  
+    ---Content Discovery and why it is important---
+      Content is the assets and inner workings of the application that we are testing. 
+      This can be files, folders, or pathways that weren't necessarily intended to be accessed by the general public.
+      Ex: You have a blog. You want everyone to be able to read the blogs. However, you do not want everyone to be able to manage your blogs still being reviewed or to have access to the admin panel. 
+      
+      Web servers, unless configured otherwise, are designed to serve files and folders, as long as you know the names.
+      
+    For example, we may be able to find:
+
+    Configuration files
+    Passwords and secrets
+    Backups
+    Content management systems
+    Administrator dashboards or portals
+    
+    We can search for and discover files on our own or we can use tools to automate searching. completing the job much faster. Enter Dirbuster. The tool works by accepting a wordlist which is a file containing everything that we want to search for, and then a few other arguments. 
+    Example: cmnatic@thm$ cat wordlist.txt
+
+              admin/
+              docs/
+              config/
+              install/
+              install-en/
+     Dirbuster will scan the website "santascookies.thm" for the folders listed within this wordlist.  
+     To use Dirbuster to discover content on this site, we would use the command dirb and provide some information such as the URL of the website and the location of the word list.
+      The final command looks like. 
+     cmnatic@thm$ dirb http://santascookies.thm/ /usr/share/wordlists/mywordlist.txt
+     
+     We have provided Dirbuster the following commands:
+      The URL of the website
+      The location (full path) on our attacking machine of our wordlist.
+     
+     Your ability to discover content is only as good as your wordlist. You will find another collection of open-source wordlist such as SecLists, where you may be able to use a combination of context and wordlist to discover content.
+     
+    ---Default Credentials---
+    Web applications and services often come with a default pair of credentials. Developers leave these credentials in place so that you can quickly get started with the platform (with the hopes that you will change them). However, as you'll come to discover, not everyone does, or in fact, applications often include other accounts that are not well documented.
+    Sometimes, these credentials are stored in the web applications configuration files or public documentation.
+    
+    
+    ---Lab---
+    
+Using a common wordlist for discovering content, enumerate http://10.10.99.91 to find the location of the administrator dashboard. What is the name of the folder?
+Ran root@ip-10-10-56-238:~# dirb http://10.10.99.91 /usr/share/wordlists/dirb/common.txt 
+To get an answer of admin
+
+
+
+In your web browser, try some default credentials on the newly discovered login form for the "administrator" user. What is the password?
+Went to http://10.10.99.91/admin
+logged in with administrator administrator. 
+
+
+Access the admin panel. What is the value of the flag?
+THM{ADM1N_AC3SS}
+
+
+
+
+
+
+
+
