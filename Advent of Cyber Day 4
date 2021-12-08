@@ -1,0 +1,14 @@
+Web Exploitation Santa's Running Behind
+
+Learning Objectives
+
+In today’s task, we’re going to learn the following.
+
+    Understanding authentication and where it is used
+    Understanding what fuzzing is
+    Understanding what Burp Suite is and how we can use it for fuzzing a login form to gain access
+    Apply this knowledge to retrieve Santa’s travel itinerary 
+    
+    
+    
+    
